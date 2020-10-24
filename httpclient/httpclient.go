@@ -9,9 +9,10 @@ import (
 
 const (
 	apihost      = "dataservice.accuweather.com"
-	apikey       = "NO1BETAyST8fKOAdMhAmGyX99J9nKYVy"
 	apiurlscheme = "https"
 )
+
+var apikey = os.Getenv("weatherapikey")
 
 func Getbaseurl() url.URL {
 
@@ -22,7 +23,7 @@ func Getbaseurl() url.URL {
 		Host:     apihost,
 		RawQuery: querryparam,
 	}
-	
+
 	return Baseurl
 }
 
@@ -38,7 +39,7 @@ func Getrequest(requesturl string) []byte {
 	}
 
 	defer res.Body.Close()
-	
+
 	return (resbody)
 
 }
