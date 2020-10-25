@@ -15,6 +15,13 @@ const (
 
 var apikey = os.Getenv("weatherapikey")
 
+func init() {
+	if apikey == "" {
+		log.Fatalln("Unable to initialize http client")
+		os.Exit(0)
+	}
+}
+
 func Getbaseurl() url.URL {
 
 	var querryparam = "apikey=" + apikey
